@@ -57,12 +57,12 @@ function init() {
 		});
 		
 		//click handler for list items
-		$(document).on("touchend", "#assetList li", function() {
+/* 		$(document).on("touchend", "#assetList li", function() {
 			var loc = $(this).data("url");
 			console.dir(loc);
 			$("#assetImage").attr("src", loc);
 			$("#popupImage").popup("open");
-		});
+		}); */
 		
 	});
 	
