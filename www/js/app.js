@@ -21,7 +21,7 @@ function init() {
 			} else {
 				var list = "<ul data-role='listview' data-inset='true' id='assetList'>";
 				for(var i=0, len=results.length; i<len; i++) {
-					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" | "+results[i].toURL()+" <audio src=&Prime;"+results[i].toURL()+"&Prime; controls></li>";	
+					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" | "+results[i].toURL()+" <audio src='"+results[i].toURL()+"'; controls></li>";	
 				}
 				list += "</ul>";
 				console.log(list);
