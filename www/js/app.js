@@ -21,7 +21,7 @@ function init() {
 			} else {
 				var list = "<ul data-role='listview' data-inset='true' id='assetList'>";
 				for(var i=0, len=results.length; i<len; i++) {
-					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" <audio src='"+results[i].toURL()+"' controls></li>";	
+					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" '"+results[i].toURL()+"' <audio src='"+results[i].toURL()+"' controls></li>";	
 				}
 				list += "</ul>";
 				console.log(list);
@@ -87,7 +87,7 @@ function getAssets() {
 		return def.promise();
 	}
 	
-	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
+	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
 		//now we have the data dir, get our asset dir
 		console.log("got main dir",dir);
 		dir.getDirectory(globals.assetSubDir+"/", {create:true}, function(aDir) {
