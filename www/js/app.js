@@ -24,6 +24,7 @@ function init() {
 					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" | "+results[i].toURL()+" <audio src='"+results[i].toURL()+"'; controls></li>";	
 				}
 				list += "</ul>";
+				"<p> VERSIE 8 </p>"
 				console.log(list);
 				$("#assetDiv").html(list);
 				$("#assetList").listview();
