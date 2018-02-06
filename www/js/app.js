@@ -130,9 +130,8 @@ function fetch(url) {
 
 
 
-function playAudio(id) {
-    var audioElement = document.getElementById(id);
-    var url = audioElement.getAttribute('src');
+function playAudio() {
+    var url = "file:///storage/sdcard0/Android/data/nl.woodcreate.aandachtspuntpremium/files/assets/ap-veiligeplek.mp3"
     var my_media = new Media(url,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
