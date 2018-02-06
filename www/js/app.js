@@ -87,7 +87,7 @@ function getAssets() {
 		return def.promise();
 	}
 	
-	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
+	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
 		//now we have the data dir, get our asset dir
 		console.log("got main dir",dir);
 		dir.getDirectory(globals.assetSubDir+"/", {create:true}, function(aDir) {
