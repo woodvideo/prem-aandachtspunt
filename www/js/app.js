@@ -21,7 +21,7 @@ function init() {
 			} else {
 				var list = "<ul data-role='listview' data-inset='true' id='assetList'>";
 				for(var i=0, len=results.length; i<len; i++) {
-					list += "<li> <a src='"+results[i].toURL()+"'>"+results[i].name+" | "+results[i].toURL()+"</a> <audio src='"+results[i].toURL()+"'; controls> </li>";	
+					list += "<li> <a src='"+results[i].toURL()+"'>"+results[i].name+"  "+results[i].toURI()+"</a> <audio src='"+results[i].toURI()+"'; controls> </li>";	
 				}
 				list += "</ul>";
 				console.log(list);
@@ -131,8 +131,9 @@ function fetch(url) {
 
 function playAudio() {
 	var fileInKwestie = "ap-veiligeplek.mp3"
-	var patInKwestie = globals.assetDirectory + dileInKwestie;
-    var my_media = new Media(patInKwestie,
+	var patInKwestie = globals.assetDirectory.toUrl + fileInKwestie;
+	var URIinkweste = patInKwestie.toURI();
+    var my_media = new Media(URIinkweste,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
             // error callback
