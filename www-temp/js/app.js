@@ -1,9 +1,11 @@
 var globals = {};
 globals.checkedServer = false;
-globals.assetServer = "http://woodvideo.nl/aandachtspuntaudio/img.json";
+globals.assetServer = "http://woodvideo.nl/aandachtspuntaudio/tracklist.json";
 globals.assetSubDir = "assets";
 
 document.addEventListener("deviceready", init, false);
+console.log("dv ready :", globals.assetServer);
+
 function init() {
 	
 	$(document).on("pageshow", "#downloadPage", function(e) {
@@ -19,7 +21,7 @@ function init() {
 			} else {
 				var list = "<ul data-role='listview' data-inset='true' id='assetList'>";
 				for(var i=0, len=results.length; i<len; i++) {
-					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+"</li>";	
+					list += "<li> <a src='"+results[i].toURL()+"'>"+results[i].name+"  "+results[i].toURI()+"</a> <audio src='"+results[i].toURI()+"'; controls> </li>";	
 				}
 				list += "</ul>";
 				console.log(list);
@@ -32,8 +34,8 @@ function init() {
 				$.get(globals.assetServer).done(function(res) {
 					/*
 					Each asset is a URL for an asset. We check the filename
-					of each to see if it exists in our current list of assets					
-					*/
+					of each to see if it exists in our current list of assets       				
+					*/   
 					console.log("server assets", res);
 					for(var i=0, len=res.length; i<len; i++) {
 						var file = res[i].split("/").pop();
@@ -55,12 +57,12 @@ function init() {
 		});
 		
 		//click handler for list items
-		$(document).on("touchend", "#assetList li", function() {
+/* 		$(document).on("touchend", "#assetList li", function() {
 			var loc = $(this).data("url");
 			console.dir(loc);
 			$("#assetImage").attr("src", loc);
 			$("#popupImage").popup("open");
-		});
+		}); */
 		
 	});
 	
@@ -85,7 +87,7 @@ function getAssets() {
 		return def.promise();
 	}
 	
-	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
+	var dirEntry = window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(dir) {
 		//now we have the data dir, get our asset dir
 		console.log("got main dir",dir);
 		dir.getDirectory(globals.assetSubDir+"/", {create:true}, function(aDir) {
@@ -123,3 +125,22 @@ function fetch(url) {
 		fsError); 
 				
 }
+
+
+
+
+function playAudio(defile) {
+	var fileInKwestie = defile;
+	var patInKwestie = globals.assetDirectory + fileInKwestie;
+	var URIinkwestie = patInKwestie.toURI();
+    var my_media = new Media(URIinkwestie,
+            // success callback
+             function () { console.log("playAudio():Audio Success"); },
+            // error callback
+             function (err) { console.log("playAudio():Audio Error: " + err); }
+    );
+           // Play audio
+    my_media.play();
+}
+
+
