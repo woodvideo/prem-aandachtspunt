@@ -19,7 +19,13 @@ function init() {
 			} else {
 				var list = "<ul data-role='listview' data-inset='true' id='assetList'>";
 				for(var i=0, len=results.length; i<len; i++) {
-					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+" <img src='"+results[i].toURL()+"'> </li>";	
+					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+"<img src='"+results[i].fullPath+"'> </li>";
+					
+					
+					console.log("CHECK DIT CHECK DIT CHECK DIT CHECK DIT CHECK DIT");
+					console.log(results[i]);
+					console.log (results[i].fullPath);
+					console.log(results[i].toURL());
 				}
 				list += "</ul>";
 				console.log(list);
@@ -42,6 +48,8 @@ function init() {
 						for(var k=0; k<globals.assets.length; k++) {
 							if(globals.assets[k].name === file) {
 								console.log("we already have file "+file);
+								console.log ("externe url", res[i]);
+								console.log ("lokaal object", globals.assets[k]);
 								haveIt = true;
 								break;
 							}
@@ -58,7 +66,7 @@ function init() {
 		$(document).on("touchend", "#assetList li", function() {
 			var loc = $(this).data("url");
 			console.dir(loc);
-			console.log (loc);
+			console.log ("Dit is de locatie dus", loc);
 			$("#assetImage").attr("src", loc);
 			$("#popupImage").popup("open");
 		});
