@@ -129,10 +129,10 @@ function fetch(url) {
 
 
 
-
 function playAudio() {
-    var url = "file:///storage/sdcard0/Android/data/nl.woodcreate.aandachtspuntpremium/files/assets/ap-veiligeplek.mp3"
-    var my_media = new Media(url,
+	var fileInKwestie = "ap-veiligeplek.mp3"
+	var patInKwestie = globals.assetDirectory + dileInKwestie;
+    var my_media = new Media(patInKwestie,
             // success callback
              function () { console.log("playAudio():Audio Success"); },
             // error callback
