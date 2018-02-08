@@ -6,6 +6,39 @@ globals.activeTrack = ""
 document.addEventListener("deviceready", init, false);
 function init() {	
 	getAssets();
+$(document).on("pageshow", "#bodyscan-lang", function() { 
+	downladOfnie ('bodyscan-lang');
+});
+
+$(document).on("pageshow", "#bodyscan-kort", function() { 
+	downladOfnie ('bodyscan-kort');
+});
+
+$(document).on("pageshow", "#zitmeditatie-lang", function() { 
+	downladOfnie ('zitmeditatie-lang');
+});
+
+
+$(document).on("pageshow", "#zitmeditatie-kort", function() { 
+	downladOfnie ('zitmeditatie-kort');
+});
+
+$(document).on("pageshow", "#veiligeplek", function() { 
+	downladOfnie ('veiligeplek');
+});
+
+$(document).on("pageshow", "#compassionelevriend", function() { 
+	downladOfnie ('compassionelevriend');
+});
+
+$(document).on("pageshow", "#ademruimtemetvriedelijkheid", function() { 
+	downladOfnie ('ademruimtemetvriedelijkheid');
+});
+
+$(document).on("pageshow", "#ademoefening", function() { 
+	downladOfnie ('ademoefening');
+});
+
 }
 
 
@@ -119,7 +152,7 @@ function playAlternateAudio (songId){
 
 function wegKnop (){
 console.log('Bestand aanwezig');
-document.getElementById("statusweergave").innerHTML = "Bestand aanwezig";
+document.getElementById("statusweergave").innerHTML = "Gebruikt offline versie";
  var btnDll = document.getElementById("btnDownload");
  var btnWis = document.getElementById("btnWissen");
 	btnDll.style.display = "none";
@@ -128,7 +161,7 @@ document.getElementById("statusweergave").innerHTML = "Bestand aanwezig";
 
 function downloadKnop (){
 console.log('Bestand niet aanwezig')
-document.getElementById("statusweergave").innerHTML = "Bestand niet aanwezig";
+document.getElementById("statusweergave").innerHTML = "Gebruikt de online versie";
  var btnDll = document.getElementById("btnDownload");
  var btnWis = document.getElementById("btnWissen");
 	btnDll.style.display = "block";
