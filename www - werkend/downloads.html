@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+
+		<div data-role="page" id="downloadPage">
+		
+			<div data-role="header"><a href="index.html" data-icon="home" data-role="button">Home</a><h1>Assets</h1></div>
+			
+			<div role="main" class="ui-content">
+				
+				<div id="assetDiv"></div>
+				<div id="assetStatus"></div>
+
+				<div data-role="popup" id="popupImage">
+					 <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+					<img id="assetImage" />
+				</div>
+				
+				<p>Status: </p><p id="statusweergave">...</p>
+				<button onclick="mp3Spelen('veiligeplek')">Speel veiligeplek</button></br>
+				<button onclick="playAlternateAudio('veiligeplek')">Alternate Speel veiligeplek</button></br>
+				<button id="btnDownload" style="display:none" onclick="downloadAudio('veiligeplek')">download veiligeplek</button></br>
+				<button id="btnWissen" style="display:none" onclick="wegHalen('veiligeplek')">verwijder veiligeplek</button></br>
+				<button onclick="downladOfnie('veiligeplek')">check voor veiligeplek</button></br></br>
+				<audio type="audio/mpeg" src="" id="audioPlayer" controls>
+				
+		
+
+			</div>
+			
+			<div data-role="footer"><h4>Footer</h4></div>
+
+		</div>
+	
+	</body>
+</html>
