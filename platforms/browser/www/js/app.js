@@ -23,11 +23,7 @@ function init() {
 				for(var i=0, len=results.length; i<len; i++) {
 					list += "<li data-url='"+results[i].toURL()+"'>"+results[i].name+"<img src='"+results[i].toURL()+"'> </li>";
 					
-					
-/* 					console.log("CHECK DIT CHECK DIT CHECK DIT CHECK DIT CHECK DIT");
-					console.log(results[i]);
-					console.log (results[i].fullPath);
-					console.log(results[i].toURL()); */
+	
 				}
 				list += "</ul>";
 				console.log(list);
@@ -50,8 +46,6 @@ function init() {
 						for(var k=0; k<globals.assets.length; k++) {
 							if(globals.assets[k].name === file) {
 								console.log("we already have file "+file);
-								console.log ("externe url", res[i]);
-								console.log ("lokaal object", globals.assets[k]);
 								haveIt = true;
 								break;
 							}
@@ -149,8 +143,8 @@ function mp3Spelen (bestandsNaam){
 function lokaalSpelen(){
 	var lokaleBron = cordova.file.dataDirectory + 'muziek/' + globals.activeTrack;
 	
-	if( device.platform === 'iOS' ) {
-	lokaleBron = lokaleBron.replace('file://', '')}
+/* 	if( device.platform === 'iOS' ) {
+	lokaleBron = lokaleBron.replace('file://', '')} */
 	
 	console.log (lokaleBron);
 	$("#audioPlayer").attr("src",lokaleBron);
@@ -195,6 +189,7 @@ window.resolveLocalFileSystemURL(path, function(dir) {
 	dir.getFile(filename, {create:false}, function(fileEntry) {
               fileEntry.remove(function(){
                   console.log("Bestand gewist");
+				  downladOfnie(delFile);
 				  
               },function(error){
                   console.log("er is iets mis gegeaan", error);
@@ -204,6 +199,7 @@ window.resolveLocalFileSystemURL(path, function(dir) {
 	});
 });
 }
+
 
 function downladOfnie (bestandsNaam){
 	store = cordova.file.dataDirectory + 'muziek/';
@@ -216,16 +212,20 @@ function downladOfnie (bestandsNaam){
 function wegKnop (){
 console.log('Bestand aanwezig');
 document.getElementById("statusweergave").innerHTML = "Bestand aanwezig";
-
+ var btnDll = document.getElementById("btnDownload");
+ var btnWis = document.getElementById("btnWissen");
+	btnDll.style.display = "none";
+	btnWis.style.display = "block";
 }
 
 function downloadKnop (){
 console.log('Bestand niet aanwezig')
 document.getElementById("statusweergave").innerHTML = "Bestand niet aanwezig";
+ var btnDll = document.getElementById("btnDownload");
+ var btnWis = document.getElementById("btnWissen");
+	btnDll.style.display = "block";
+	btnWis.style.display = "none";
 }
 
-
-function audio_win(response)  { document.getElementById("statusweergave").innerHTML ="Audio FAILED" + response; }
-function audio_fail(response) { document.getElementById("statusweergave").innerHTML ="Audio WINNER" + response; }
 
 

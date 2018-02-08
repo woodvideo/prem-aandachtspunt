@@ -21,8 +21,8 @@
 				<p>Status: </p><p id="statusweergave">...</p>
 				<button onclick="mp3Spelen('veiligeplek')">Speel veiligeplek</button></br>
 				<button onclick="playAlternateAudio('veiligeplek')">Alternate Speel veiligeplek</button></br>
-				<button onclick="downloadAudio('veiligeplek')">download veiligeplek</button></br>
-				<button onclick="wegHalen('veiligeplek')">verwijder veiligeplek</button></br>
+				<button id="btnDownload" style="display:none" onclick="downloadAudio('veiligeplek')">download veiligeplek</button></br>
+				<button id="btnWissen" style="display:none" onclick="wegHalen('veiligeplek')">verwijder veiligeplek</button></br>
 				<button onclick="downladOfnie('veiligeplek')">check voor veiligeplek</button></br></br>
 				<audio type="audio/mpeg" src="" id="audioPlayer" controls>
 				
