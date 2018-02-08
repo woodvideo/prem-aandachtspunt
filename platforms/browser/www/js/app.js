@@ -3,6 +3,7 @@ globals.checkedServer = false;
 globals.assetServer = "http://woodvideo.nl/aandachtspuntaudio/img.json";
 globals.assetSubDir = "muziek";
 globals.muziekServer = "http://www.woodvideo.nl/aandachtspuntaudio/";
+globals.activeTrack = ""
 
 document.addEventListener("deviceready", init, false);
 function init() {
@@ -138,8 +139,15 @@ function fetch(url) {
 
 //EIGEN FUNCTIES
 
-function playAudio(songId){
-	var lokaleBron = cordova.file.dataDirectory + 'muziek/ap-' + songId + '.mp3';
+function mp3Spelen (bestandsNaam){
+	store = cordova.file.dataDirectory + 'muziek/';
+	fileName = 'ap-' + bestandsNaam +'.mp3';
+	globals.activeTrack = fileName
+	window.resolveLocalFileSystemURL(store + fileName, lokaalSpelen, externSpelen);
+}
+
+function lokaalSpelen(){
+	var lokaleBron = cordova.file.dataDirectory + 'muziek/' + globals.activeTrack;
 	
 	if( device.platform === 'iOS' ) {
 	lokaleBron = lokaleBron.replace('file://', '')}
@@ -147,6 +155,13 @@ function playAudio(songId){
 	console.log (lokaleBron);
 	$("#audioPlayer").attr("src",lokaleBron);
 }
+
+function externSpelen(){
+	var externeBron = globals.muziekServer + globals.activeTrack;
+	console.log (externeBron);
+	$("#audioPlayer").attr("src",externeBron);
+}
+
 
 
 function playAlternateAudio (songId){
@@ -166,8 +181,7 @@ function playAlternateAudio (songId){
 function downloadAudio (dllSongId){
 	var doel = cordova.file.dataDirectory + 'muziek/ap-' + dllSongId + '.mp3';
 	var bron = globals.muziekServer + 'ap-' + dllSongId + '.mp3';
-	console.log (bron, doel);
-	
+	console.log (bron, doel);	
 	fetch(bron)
 }
 
@@ -194,12 +208,15 @@ window.resolveLocalFileSystemURL(path, function(dir) {
 function downladOfnie (bestandsNaam){
 	store = cordova.file.dataDirectory + 'muziek/';
 	fileName = 'ap-' + bestandsNaam +'.mp3';
-	window.resolveLocalFileSystemURL(store + fileName, wegKnop(fileName), downloadKnop);
+	window.resolveLocalFileSystemURL(store + fileName, wegKnop, downloadKnop);
 }
 
-function wegKnop (fileName){
+
+
+function wegKnop (){
 console.log('Bestand aanwezig');
-document.getElementById("statusweergave").innerHTML = "Bestand <strong>" + fileName + "</strong> aanwezig";
+document.getElementById("statusweergave").innerHTML = "Bestand aanwezig";
+
 }
 
 function downloadKnop (){
