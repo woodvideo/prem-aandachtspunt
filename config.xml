@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="nl.woodcreate.aandachtspuntpremium" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>AandachtsPunt</name>
+<widget id="nl.woodcreate.aandachtspuntpremium" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>AandachtsPuntPrem</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        A Big retry
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        WoodVideo
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
