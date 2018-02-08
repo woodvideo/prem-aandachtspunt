@@ -72,6 +72,7 @@ function downloadAudio (dllSongId){
 //FILE CHECK
 
 function downladOfnie (bestandsNaam){
+	console.log("check of bestand er is",bestandsNaam);
 	store = cordova.file.dataDirectory + 'muziek/';
 	fileName = 'ap-' + bestandsNaam +'.mp3';
 	window.resolveLocalFileSystemURL(store + fileName, wegKnop, downloadKnop);

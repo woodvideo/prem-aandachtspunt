@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+	</head>
+	<body>
+
+		<div data-role="page" id="downloadPage">
+		
+			<div data-role="header"><a href="index.html" data-icon="home" data-role="button">Home</a><h1>Veilige Plek</h1></div>
+			
+			<div role="main" class="ui-content">
+				<script> downladOfnie('veiligeplek'); </script>
+				<p>Status: </p><p id="statusweergave">...</p>
+				<!-- <button onclick="mp3Spelen('veiligeplek')">Speel veiligeplek</button></br> -->
+				<!-- <button onclick="playAlternateAudio('veiligeplek')">Alternate Speel veiligeplek</button></br> -->
+				<button id="btnDownload" style="display:none" onclick="downloadAudio('veiligeplek')">Download veiligeplek</button>
+				<button id="btnWissen" style="display:none" onclick="wegHalen('veiligeplek')">Verwijder veiligeplek</button></br>
+				</br></br>
+				<audio type="audio/mpeg" src="" id="audioPlayer" controls>
+				
+	
+			</div>
+			
+			<div data-role="footer"><h4>Footer</h4></div>
+
+		</div>
+	
+	</body>
+</html>

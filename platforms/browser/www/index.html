@@ -5,24 +5,37 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title></title>
 		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.0 minimal-ui">
         <link rel="stylesheet" type="text/css" href="css/app.css" />
 		<link rel="stylesheet" href="lib/jquery.mobile-1.4.5.min.css" />
+		
+		
 	</head>
 	<body>
 
 		<div data-role="page" id="homePage">
+		<div data-role="panel" id="mypanel" data-display="push">
+		<h2> Meditaties </h2>
+        <a href="ademoefening.html" class="ui-btn">ademoefening</a>
+		<a href="ademruimtemetvriedelijkheid.html" class="ui-btn">ademruimtemetvriedelijkheid</a>
+		<a href="bodyscan-kort.html" class="ui-btn">bodyscan-kort</a>
+		<a href="bodyscan-lang.html" class="ui-btn">bodyscan-lang</a>
+		<a href="compassionelevriend.html" class="ui-btn">compassionelevriend</a>
+		<a href="veiligeplek.html" class="ui-btn">VeiligePlek</a>
+		<a href="zitmeditatie-kort.html" class="ui-btn">zitmeditatie-kort</a>
+		<a href="zitmeditatie-lang.html" class="ui-btn">zitmeditatie-lang</a>
 		
-			<div data-role="header"><h1>AandachtsPunt</h1></div>
+		</div><!-- /panel -->
+		
+			<div data-role="header"> <a class ="ui-btn-b" href="#mypanel" data-icon="bars" data-role="button">Menu</a> <h1>AandachtsPunt</h1></div>
 			
 			<div role="main" class="ui-content">
 				
 				<p>
 					Test versie van de Aandachtspunt app
 				</p>
-				
 				<p>
-					<a href="downloads.html" class="ui-btn">VeiligePlek</a>
+					<a href="#mypanel" class="ui-btn">Menu</a>
 				</p>
 
 			</div>
