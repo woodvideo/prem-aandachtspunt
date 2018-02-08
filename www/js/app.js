@@ -140,11 +140,28 @@ function fetch(url) {
 
 function playAudio(songId){
 	var lokaleBron = cordova.file.dataDirectory + 'muziek/ap-' + songId + '.mp3';
+	
+	if( device.platform === 'iOS' ) {
+	lokaleBron = lokaleBron.replace('file://', '')}
+	
 	console.log (lokaleBron);
-	//lokaleBron = lokaleBron.replace('file://', '');
-	console.log (lokaleBron);
-	$("#audioPlayer").attr("src",lokaleBron.toURL());
+	$("#audioPlayer").attr("src",lokaleBron);
 }
+
+
+function playAlternateAudio (songId){
+	var lokaleBron = cordova.file.dataDirectory + 'muziek/ap-' + songId + '.mp3';
+	
+	if( device.platform === 'iOS' ) {
+	lokaleBron = lokaleBron.replace('file://', '')}
+	
+	console.log (lokaleBron);
+	var audio = new Media(lokaleBron, audio_win, audio_fail );
+	audio.play()
+}
+
+
+
 
 function downloadAudio (dllSongId){
 	var doel = cordova.file.dataDirectory + 'muziek/ap-' + dllSongId + '.mp3';
@@ -191,7 +208,7 @@ document.getElementById("statusweergave").innerHTML = "Bestand niet aanwezig";
 }
 
 
-function audio_win(response)  { console.log('Audio FAILED' + response); }
-function audio_fail(response) { console.log('Audio WINNER' + response); }
+function audio_win(response)  { document.getElementById("statusweergave").innerHTML ="Audio FAILED" + response; }
+function audio_fail(response) { document.getElementById("statusweergave").innerHTML ="Audio WINNER" + response; }
 
 
