@@ -141,7 +141,8 @@ function fetch(url) {
 function playAudio(songId){
 	var lokaleBron = cordova.file.dataDirectory + 'muziek/ap-' + songId + '.mp3';
 	console.log (lokaleBron);
-	
+	lokaleBron = lokaleBron.replace('file://', '');
+	console.log (lokaleBron);
 	$("#audioPlayer").attr("src",lokaleBron);
 }
 
@@ -189,5 +190,8 @@ console.log('Bestand niet aanwezig')
 document.getElementById("statusweergave").innerHTML = "Bestand niet aanwezig";
 }
 
+
+function audio_win(response)  { console.log('Audio FAILED' + response); }
+function audio_fail(response) { console.log('Audio WINNER' + response); }
 
 
