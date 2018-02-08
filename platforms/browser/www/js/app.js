@@ -141,9 +141,9 @@ function fetch(url) {
 function playAudio(songId){
 	var lokaleBron = cordova.file.dataDirectory + 'muziek/ap-' + songId + '.mp3';
 	console.log (lokaleBron);
-	lokaleBron = lokaleBron.replace('file://', '');
+	//lokaleBron = lokaleBron.replace('file://', '');
 	console.log (lokaleBron);
-	$("#audioPlayer").attr("src",lokaleBron);
+	$("#audioPlayer").attr("src",lokaleBron.toURL());
 }
 
 function downloadAudio (dllSongId){
