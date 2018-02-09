@@ -12,6 +12,16 @@ $(document).on("pageshow", "#bodyscan-lang", function() {
 
 $(document).on("pageshow", "#bodyscan-kort", function() { 
 	downladOfnie ('bodyscan-kort');
+	
+	$("#flip").on("change", function(e){
+   var newValue = $("#flag").val();
+  if(newValue == "ja"){
+     console.log('WE GAAN DOWNLAODEN');
+  } else {
+     console.log('WE GAAN WISSEN');
+  }
+	});
+	
 });
 
 $(document).on("pageshow", "#zitmeditatie-lang", function() { 
@@ -75,6 +85,7 @@ window.resolveLocalFileSystemURL(path, function(dir) {
               fileEntry.remove(function(){
                   console.log("Bestand gewist");
 				  downladOfnie(delFile);
+
 				 				  
               },function(error){
                   console.log("er is iets mis gegeaan", error);
@@ -97,6 +108,7 @@ function downloadAudio (dllSongId){
 		function(entry) {
 			console.log("Bestand " + localFileName + " gedownload");
 			downladOfnie(dllSongId);
+
 		},
 		fsError); 				
 }
@@ -150,20 +162,67 @@ function playAlternateAudio (songId){
 
 // INTERFACE LOGIC
 
+function flipChanged(e) {
+        var id = this.id,
+            value = this.value;
+        console.log(id + " has been changed! " + value);
+		if (value == "ja"){console.log("START HET DOWNLADEN VAN " + globals.activeTrack)}
+		if (value == "nee"){console.log("START HET WISSEN VAN " + globals.activeTrack)}
+    }
+		
+
+
 function wegKnop (){
 console.log('Bestand aanwezig');
 document.getElementById("statusweergave").innerHTML = "Gebruikt offline versie";
  var btnDll = document.getElementById("btnDownload");
  var btnWis = document.getElementById("btnWissen");
+				  $("#flip")
+					.off("change")
+					.val('ja')
+					.flipswitch('refresh')
+					.on("change", flipChanged);
+
 	btnDll.style.display = "none";
 	btnWis.style.display = "block";
 }
+
+
+
+
+
 
 function downloadKnop (){
 console.log('Bestand niet aanwezig')
 document.getElementById("statusweergave").innerHTML = "Gebruikt de online versie";
  var btnDll = document.getElementById("btnDownload");
  var btnWis = document.getElementById("btnWissen");
+ 
+ 				  $("#flip")
+					.off("change")
+					.val('nee')
+					.flipswitch('refresh')
+					.on("change", flipChanged);
+					
 	btnDll.style.display = "block";
 	btnWis.style.display = "none";
 }
+
+
+
+
+
+// NOG EVEN NAAR KIJKEN
+/* 
+$("#flip").on"change", function(e){
+   var newValue = $("#flag").val();
+  if(newValue == "ja"){
+     console.log('WE GAAN DOWNLAODEN');
+  } else {
+     console.log('WE GAAN WISSEN');
+  }
+ */
+
+
+
+

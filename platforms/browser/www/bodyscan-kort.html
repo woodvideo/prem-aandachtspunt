@@ -22,11 +22,20 @@
 			
 			<div role="main" class="ui-content">
 				<p>Status: </p><p id="statusweergave">...</p>
+						<div class="ui-field-contain">
+            <label for="flip">Offline beschikbaar:</label>
+            <select id="flip" data-role="flipswitch">
+                <option value="nee">Nee</option>
+                <option value="ja">Ja</option>
+            </select>
+        </div>
 				<!-- <button onclick="mp3Spelen('bodyscan-kort')">Speel bodyscan-kort</button></br> -->
 				<!-- <button onclick="playAlternateAudio('bodyscan-kort')">Alternate Speel bodyscan-kort</button></br> -->
 				<button id="btnDownload" style="display:none" onclick="downloadAudio('bodyscan-kort')">Download Korte bodyscan</button>
 				<button id="btnWissen" style="display:none" onclick="wegHalen('bodyscan-kort')">Verwijder Korte bodyscan</button></br>
 				</br></br>
+
+				
 				<audio type="audio/mpeg" src="" id="audioPlayer" controls>
 				
 	
