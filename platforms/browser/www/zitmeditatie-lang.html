@@ -21,18 +21,29 @@
 			<div data-role="header"><a class ="ui-btn-b" href="#mypanel" data-icon="bars" data-role="button">Menu</a> <h1>lange Zitmeditatie</h1></div>
 			
 			<div role="main" class="ui-content">
-				<p>Status: </p><p id="statusweergave">...</p>
-				<!-- <button onclick="mp3Spelen('zitmeditatie-lang')">Speel zitmeditatie-lang</button></br> -->
-				<!-- <button onclick="playAlternateAudio('zitmeditatie-lang')">Alternate Speel zitmeditatie-lang</button></br> -->
-				<button id="btnDownload" style="display:none" onclick="downloadAudio('zitmeditatie-lang')">Download lange Zitmeditati</button>
-				<button id="btnWissen" style="display:none" onclick="wegHalen('zitmeditatie-lang')">Verwijder lange Zitmeditati</button></br>
-				</br></br>
-				<audio type="audio/mpeg" src="" id="audioPlayer" controls>
+						<div class="ui-field-contain">
+            <label for="flip">Offline beschikbaar:</label>
+            <select id="flip" data-role="flipswitch">
+                <option value="nee">Nee</option>
+                <option value="ja">Ja</option>
+            </select>
+        </div>
+				<progress style="width:100%;" id="zoekbalk" value="0" max="1"></progress></br>
+				<em id="tijdindicatie">00:00</em>
+                <em style="float:right; text-align:right;" id="totaaltijd">00:00</em></br>
+				</br>
+				<button style="display:block" id="btnPlay" onclick="playMusic()">Play</button>
+				<button style="display:none" id="btnPauze" onclick="pauzeMusic()">Pauze</button>
+				</br>
+
+				<audio ontimeupdate="udpateProgress()" type="audio/mpeg" src="" id="audioPlayer">
+				
+				</br>
 				
 	
 			</div>
 			
-			<div data-role="footer"><h4>Footer</h4></div>
+			<div data-role="footer"><h4>&copy; 2017 - woodcreate</h4></div>
 
 		</div>
 	

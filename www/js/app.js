@@ -126,6 +126,7 @@ function downladOfnie (bestandsNaam){
 	mp3Spelen(bestandsNaam);
 	globals.progressbar = document.getElementById("zoekbalk");
 	globals.progressbar.addEventListener("click", zoek);
+	
 }
 
 
@@ -185,6 +186,7 @@ function stopMusic()
 	{
 		var player = document.getElementById('audioPlayer');
 		player.pause();
+		player.currentTime = 0;
 		document.getElementById("btnPlay").style.display = "block";
 		document.getElementById("btnPauze").style.display = "none";
 	}
@@ -223,6 +225,7 @@ function udpateProgress()
 // INTERFACE LOGIC
 
 function flipChanged(e) {
+	
         var id = this.id,
             value = this.value;
         console.log(id + " has been changed! " + value);
@@ -230,10 +233,12 @@ function flipChanged(e) {
 		console.log(dllTrackId);
 		if (value == "ja"){
 		console.log("START HET DOWNLADEN VAN " + globals.activeTrack);
+			stopMusic();
 			downloadAudio(dllTrackId);
 			}
 		if (value == "nee"){
 			console.log("START HET WISSEN VAN " + globals.activeTrack)
+			stopMusic();
 			wegHalen(dllTrackId);
 			}
     }
