@@ -1,11 +1,13 @@
 var globals = {};
 globals.assetSubDir = "muziek";
 globals.muziekServer = "http://www.woodvideo.nl/aandachtspuntaudio/";
-globals.activeTrack = ""
+globals.activeTrack = "";
+globals.progressbar = "";
 
 document.addEventListener("deviceready", init, false);
 function init() {	
 	getAssets();
+	
 $(document).on("pageshow", "#bodyscan-lang", function() { 
 	downladOfnie ('bodyscan-lang');
 });
@@ -122,6 +124,8 @@ function downladOfnie (bestandsNaam){
 	fileName = 'ap-' + bestandsNaam +'.mp3';
 	window.resolveLocalFileSystemURL(store + fileName, wegKnop, downloadKnop);
 	mp3Spelen(bestandsNaam);
+	globals.progressbar = document.getElementById("zoekbalk");
+	globals.progressbar.addEventListener("click", zoek);
 }
 
 
@@ -160,31 +164,95 @@ function playAlternateAudio (songId){
 }
 
 
+// PLAYER FUNCTIES
+
+function playMusic()
+	{
+		var player = document.getElementById('audioPlayer');
+		player.play();
+		document.getElementById("btnPlay").style.display = "none";
+		document.getElementById("btnPauze").style.display = "block";
+	}
+function pauzeMusic()
+	{
+		var player = document.getElementById('audioPlayer');
+		player.pause();
+		document.getElementById("btnPlay").style.display = "block";
+		document.getElementById("btnPauze").style.display = "none";
+	}
+	
+function stopMusic()
+	{
+		var player = document.getElementById('audioPlayer');
+		player.pause();
+		document.getElementById("btnPlay").style.display = "block";
+		document.getElementById("btnPauze").style.display = "none";
+	}
+	
+function zoek(e) 
+	{
+		var player = document.getElementById('audioPlayer');
+		var percent = e.offsetX / this.offsetWidth;
+		player.currentTime = percent * player.duration;
+		globals.progressbar.value = percent / 100;
+	}
+
+function udpateProgress() 
+	{	
+		var player = document.getElementById('audioPlayer');
+		totaalTijd = document.getElementById('totaaltijd');
+		var tijdIndicatie = document.getElementById('tijdindicatie');
+		
+		globals.progressbar.value = (player .currentTime / player .duration);
+		if (globals.progressbar.value == 1){stopMusic();};
+		var NUTIJD = new Date(null);
+			NUTIJD.setSeconds(player.currentTime); 
+		var telangetijd = NUTIJD.toISOString().substr(11, 8);
+		tijdIndicatie.innerHTML = telangetijd.substr(telangetijd.length - 5);
+		
+		var TOTAALETIJD = new Date(null);
+			TOTAALETIJD.setSeconds (player.duration);
+		var langeTotaalTijd = TOTAALETIJD.toISOString().substr(11, 8);
+		totaalTijd.innerHTML = langeTotaalTijd.substr(telangetijd.length - 5);
+	}
+
+
+
+
+
 // INTERFACE LOGIC
 
 function flipChanged(e) {
         var id = this.id,
             value = this.value;
         console.log(id + " has been changed! " + value);
-		if (value == "ja"){console.log("START HET DOWNLADEN VAN " + globals.activeTrack)}
-		if (value == "nee"){console.log("START HET WISSEN VAN " + globals.activeTrack)}
+		var dllTrackId = globals.activeTrack.slice(3,-4);
+		console.log(dllTrackId);
+		if (value == "ja"){
+		console.log("START HET DOWNLADEN VAN " + globals.activeTrack);
+			downloadAudio(dllTrackId);
+			}
+		if (value == "nee"){
+			console.log("START HET WISSEN VAN " + globals.activeTrack)
+			wegHalen(dllTrackId);
+			}
     }
 		
 
 
 function wegKnop (){
 console.log('Bestand aanwezig');
-document.getElementById("statusweergave").innerHTML = "Gebruikt offline versie";
- var btnDll = document.getElementById("btnDownload");
- var btnWis = document.getElementById("btnWissen");
+// document.getElementById("statusweergave").innerHTML = "Gebruikt offline versie";
+ // var btnDll = document.getElementById("btnDownload");
+ // var btnWis = document.getElementById("btnWissen");
 				  $("#flip")
 					.off("change")
 					.val('ja')
 					.flipswitch('refresh')
 					.on("change", flipChanged);
 
-	btnDll.style.display = "none";
-	btnWis.style.display = "block";
+	// btnDll.style.display = "none";
+	// btnWis.style.display = "block";
 }
 
 
@@ -194,9 +262,9 @@ document.getElementById("statusweergave").innerHTML = "Gebruikt offline versie";
 
 function downloadKnop (){
 console.log('Bestand niet aanwezig')
-document.getElementById("statusweergave").innerHTML = "Gebruikt de online versie";
- var btnDll = document.getElementById("btnDownload");
- var btnWis = document.getElementById("btnWissen");
+// document.getElementById("statusweergave").innerHTML = "Gebruikt de online versie";
+ // var btnDll = document.getElementById("btnDownload");
+ // var btnWis = document.getElementById("btnWissen");
  
  				  $("#flip")
 					.off("change")
@@ -204,8 +272,8 @@ document.getElementById("statusweergave").innerHTML = "Gebruikt de online versie
 					.flipswitch('refresh')
 					.on("change", flipChanged);
 					
-	btnDll.style.display = "block";
-	btnWis.style.display = "none";
+	// btnDll.style.display = "block";
+	// btnWis.style.display = "none";
 }
 
 
