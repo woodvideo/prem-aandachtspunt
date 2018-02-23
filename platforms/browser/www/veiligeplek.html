@@ -5,21 +5,21 @@
 	</head>
 	<body>
 		<div data-role="page" id="veiligeplek">
-				<div data-role="panel" id="mypanel" data-display="push">
-				<h2> Meditaties </h2>
-				<a href="ademoefening.html" class="ui-btn">ademoefening</a>
-				<a href="ademruimtemetvriedelijkheid.html" class="ui-btn">ademruimtemetvriedelijkheid</a>
-				<a href="bodyscan-kort.html" class="ui-btn">bodyscan-kort</a>
-				<a href="bodyscan-lang.html" class="ui-btn">bodyscan-lang</a>
-				<a href="compassionelevriend.html" class="ui-btn">compassionelevriend</a>
-				<a href="veiligeplek.html" class="ui-btn">VeiligePlek</a>
-				<a href="zitmeditatie-kort.html" class="ui-btn">zitmeditatie-kort</a>
-				<a href="zitmeditatie-lang.html" class="ui-btn">zitmeditatie-lang</a>
-				
-				</div><!-- /panel -->
-				
-			<div data-role="header"<a class ="ui-btn-b" href="#mypanel" data-icon="bars" data-role="button">Menu</a> <h1>Veilige Plek</h1></div>
-			
+		<div data-role="panel" id="mypanel" data-display="push" class="wc-mainmenu">
+		<h2> Mindfullness </h2>
+        <a href="ademoefening.html" class="ui-btn wc-menuitem"><i class="icon ion-ios-flower wc-aandachtspunt"></i> Ademoefening</a>
+		<a href="bodyscan-kort.html" class="ui-btn wc-menuitem">Korte Bodyscan</a>
+		<a href="bodyscan-lang.html" class="ui-btn wc-menuitem">Lange Bodyscan</a>
+		<a href="zitmeditatie-kort.html" class="ui-btn wc-menuitem">Korte Zitmeditatie</a>
+		<a href="zitmeditatie-lang.html" class="ui-btn wc-menuitem">Lange Zitmeditatie</a>
+		<h2> Compassie </h2>
+		<a href="compassionelevriend.html" class="ui-btn wc-menuitem">Compassionele vriend</a>
+		<a href="ademruimtemetvriedelijkheid.html" class="ui-btn wc-menuitem wc-activeitem">Ademruimte met vriedelijkheid</a>
+		<a href="veiligeplek.html" class="ui-btn wc-menuitem">Veilige Plek</a>
+
+		
+		</div><!-- /panel -->		
+			<div data-role="header" class="wc-header"> <a class ="ui-btn-b" href="#mypanel"  data-role="button"><i class="icon ion-ios-flower wc-aandachtspunt"></i> Meditaties</a> <h1>AandachtsPunt</h1> <a class ="ui-btn-c" href="#settingspanel" data-role="button"><i class="icon ion-ios-flower wc-aandachtspunt"></i></a></div>					
 			<div role="main" class="ui-content">
 						<div class="ui-field-contain">
             <label for="flip">Offline beschikbaar:</label>
@@ -32,8 +32,14 @@
 				<em id="tijdindicatie">00:00</em>
                 <em style="float:right; text-align:right;" id="totaaltijd">00:00</em></br>
 				</br>
-				<button style="display:block" id="btnPlay" onclick="playMusic()">Play</button>
-				<button style="display:none" id="btnPauze" onclick="pauzeMusic()">Pauze</button>
+								
+				<a style="display:block" id="btnPlay" onclick="playMusic()" class="wc-plyctrl">
+				<i class="icon ion-ios-play wc-ply-btn"></i>
+				</a>
+				<a style="display:none" id="btnPauze" onclick="pauzeMusic()" class="wc-plyctrl">
+				<i class="icon ion-ios-pause wc-ply-btn"></i>
+				</a>
+
 				</br>
 
 				<audio ontimeupdate="udpateProgress()" type="audio/mpeg" src="" id="audioPlayer">
